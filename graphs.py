@@ -30,6 +30,11 @@ class graph:
         self.points = [point(letter) for letter in get_next_letter(self.num)]
         self.all = {point.letter: [other_node.letter for other_node in self.points if other_node.letter != point.letter] for point in self.points}
 
+    def get_node(self, letter):
+        for point in self.points:
+           if point.letter == letter:
+               return point 
+
 
 g = graph(5)
 # for point in g.points:
@@ -41,3 +46,5 @@ print(g.all)
 # print(next(letter))
 # for let in get_next_letter():
 #     print(let)
+
+
