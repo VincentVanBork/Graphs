@@ -12,7 +12,6 @@ def get_next_letter(maxLetter):
 class point:
     def __init__(self, letter) -> None:
         self.letter = letter
-
         self.create_random()
         
     def create_random(self, Xran=(-100,100), Yran=(-100,100), Zran=(-50,50)):
@@ -29,17 +28,31 @@ class graph:
         self.num = numNodes
         self.points = [point(letter) for letter in get_next_letter(self.num)]
         self.all = {point.letter: [other_node.letter for other_node in self.points if other_node.letter != point.letter] for point in self.points}
-
+        self.current = self.all
     def get_node(self, letter):
         for point in self.points:
            if point.letter == letter:
-               return point 
+               return point
+
+    def remove_node(self, letter):
+        for key, value in self.current.items():
+            for some_node in value:
+                if some_node == letter:
+                    value.remove(some_node)
+    def reset_graph(self):
+        self.current = self.all
 
 
-g = graph(5)
+class graph_path:
+    def __init__(self, start) -> None:
+        super().__init__()
+        self.value = None
+        self.order = start
+
+# g = graph(5)
 # for point in g.points:
 #     print(point.letter) 
-print(g.all)
+# print(g.all)
 # letter = get_next_letter()
 # print(next(letter))
 # print(next(letter))

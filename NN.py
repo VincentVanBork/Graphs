@@ -1,7 +1,7 @@
 from collections import deque
 from graphs import graph
 #TODO TO JEST CHYBA NN ALBO DIJIKSTRA ZROBILEM GO PRZEZ PRZYPADEK
-class Dijikstra(graph):
+class NN(graph):
     def __init__(self, numNodes,starting_point='a') -> None:
         super().__init__(numNodes)
         self.final_route = None
