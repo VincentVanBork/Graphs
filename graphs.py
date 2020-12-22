@@ -40,7 +40,7 @@ class graph:
                 if some_node == letter:
                     value.remove(some_node)
     def reset_graph(self):
-        self.current = self.all
+        self.current = self.all.copy()
 
 
 class graph_path:
