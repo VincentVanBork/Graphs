@@ -26,9 +26,21 @@ def BFS(nodes, starting_node):
             if route[-1] == current_node and (route + node) not in routes:
                 routes.append(route+node)
                 routes_weights.append(g.get_node(current_node).calculate_distance_to(g.get_node(node)))
-
         checking_now.task_done()
+    
+    current_node = 'b'
 
+    checking_now = Queue()
+    for node in g.current[current_node]:
+        checking_now.put(node)
+
+    while not checking_now.empty():
+        node = checking_now.get()
+        for index, route in enumerate(routes):
+            if route[-1] == current_node and (route + node) not in routes:
+                routes.append(route+node)
+                routes_weights.append(routes_weights[index]+g.get_node(current_node).calculate_distance_to(g.get_node(node)))
+        checking_now.task_done()
 
 BFS(5, 'a')
 print(routes)
