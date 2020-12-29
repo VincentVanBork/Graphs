@@ -29,6 +29,7 @@ class graph:
         self.points = [point(letter) for letter in get_next_letter(self.num)]
         self.all = {point.letter: [other_node.letter for other_node in self.points if other_node.letter != point.letter] for point in self.points}
         self.current = self.all
+
     def get_node(self, letter):
         for point in self.points:
            if point.letter == letter:
@@ -39,8 +40,15 @@ class graph:
             for some_node in value:
                 if some_node == letter:
                     value.remove(some_node)
+                    
     def reset_graph(self):
-        self.current = self.all.copy()
+        print(self.current)
+        print(self.all)
+        original = self.all.copy()
+        self.current = original
+        
+        print(self.current)
+        print(self.all)
 
 
 class graph_path:

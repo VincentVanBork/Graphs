@@ -5,12 +5,13 @@ routes = []
 routes_weights = []
 
 def BFS(g, current_node):
+    print(g)
     layer = g.all[current_node]
     checking_now = Queue()
     for node in g.current[current_node]:
         checking_now.put(node)
+    g.reset_graph()
 
-    g.remove_node(current_node)
 
     while not checking_now.empty():
         
@@ -22,11 +23,13 @@ def BFS(g, current_node):
         
         checking_now.task_done()
 
-    g.reset_graph()
+    g.remove_node(current_node)
+    
         
     
 
 g = graph(4)
+print(g)
 print('all', g.all)
 print('current', g.current)
 starting_node = 'a'
@@ -38,13 +41,9 @@ for letter in first_layer:
 
 print('----------------------------')
 BFS(g, 'a')
-print(routes)
-print('all', g.all)
-print('current', g.current)
-
-print('----------------------------')
 BFS(g, 'b')
+BFS(g, 'c')
+BFS(g, 'd')
 print(routes)
-print('all', g.all)
-print('current', g.current)
+
 # print(routes_weights)
